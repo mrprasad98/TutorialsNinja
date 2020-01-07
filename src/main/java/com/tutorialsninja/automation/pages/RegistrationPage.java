@@ -33,16 +33,38 @@ public class RegistrationPage {
 	public static WebElement PrivacyPolicy;
 	@FindBy(xpath="//input[@class='btn btn-primary']")
 	public static WebElement Continue;
-	public static void enterRegistrationDetails(DataTable datatable)
+	@FindBy(css="div[class$='alert-dismissible']")
+	public static WebElement RegisterBreadCrumb;
+	@FindBy(css="input[id='input-firstname']+div")
+	public static WebElement FirstNameWarning;
+	@FindBy(css="input[id='input-lastname']+div")
+	public static WebElement LastNameWarning;
+	@FindBy(css="input[id='input-email']+div")
+	public static WebElement EmailWarning;
+	@FindBy(css="input[id='input-telephone']+div")
+	public static WebElement TelephoneWarning;
+	@FindBy(css="input[id='input-password']+div")
+	public static WebElement PasswordWarning;
+	@FindBy(css="div[class$='alert-dismissible']")
+	public static WebElement mainWarning;
+	@FindBy(xpath="//input[@type='radio'][@value='1'][@name='newsletter']")
+	public static WebElement yesToSubscription;
+	public static void enterRegistrationDetails(DataTable datatable, String detailsType)
 	{
 		Map<String, String> map=datatable.asMap(String.class, String.class);
 		Elements.TypeText(RegistrationPage.FistName, map.get("firstname"));
 		Elements.TypeText(RegistrationPage.LastName, map.get("lastname"));
-		Elements.TypeText(RegistrationPage.Email, map.get("email"));
-		Elements.TypeText(RegistrationPage.Telephone, map.get("telephone"));
+				Elements.TypeText(RegistrationPage.Telephone, map.get("telephone"));
 		Elements.TypeText(RegistrationPage.Password, map.get("password"));
 		Elements.TypeText(RegistrationPage.PasswordConfirm, map.get("password"));
-		
+		if(detailsType.equalsIgnoreCase("duplicate"))
+		{
+			Elements.TypeText(RegistrationPage.Email, map.get("email"));
+		}
+		else
+		{
+			Elements.TypeText(RegistrationPage.Email, System.currentTimeMillis()+map.get("email"));
+		}
 	}
 	
 	
