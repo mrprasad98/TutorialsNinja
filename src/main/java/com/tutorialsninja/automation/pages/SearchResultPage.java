@@ -5,6 +5,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
 import com.tutorialsninja.automation.base.Base;
+import com.tutorialsninja.automation.framework.Elements;
 
 public class SearchResultPage {
 
@@ -17,4 +18,11 @@ public class SearchResultPage {
 	public static WebElement samsungSynMaster;
 	@FindBy(css="input[id='button-search']+h2+p")
 	public static WebElement searchNotFound;
+	@FindBy(xpath="//span[text()='Add to Cart']")
+	public static WebElement addToCart;
+	
+	public static void addToCartOption()
+	{
+		Elements.click(addToCart);
+	}
 }

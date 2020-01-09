@@ -49,12 +49,14 @@ public class RegistrationPage {
 	public static WebElement mainWarning;
 	@FindBy(xpath="//input[@type='radio'][@value='1'][@name='newsletter']")
 	public static WebElement yesToSubscription;
+
 	public static void enterRegistrationDetails(DataTable datatable, String detailsType)
 	{
 		Map<String, String> map=datatable.asMap(String.class, String.class);
+		
 		Elements.TypeText(RegistrationPage.FistName, map.get("firstname"));
 		Elements.TypeText(RegistrationPage.LastName, map.get("lastname"));
-				Elements.TypeText(RegistrationPage.Telephone, map.get("telephone"));
+		Elements.TypeText(RegistrationPage.Telephone, map.get("telephone"));
 		Elements.TypeText(RegistrationPage.Password, map.get("password"));
 		Elements.TypeText(RegistrationPage.PasswordConfirm, map.get("password"));
 		if(detailsType.equalsIgnoreCase("duplicate"))
@@ -65,6 +67,7 @@ public class RegistrationPage {
 		{
 			Elements.TypeText(RegistrationPage.Email, System.currentTimeMillis()+map.get("email"));
 		}
+	
 	}
 	
 	

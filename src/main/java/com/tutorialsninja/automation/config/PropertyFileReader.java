@@ -34,4 +34,49 @@ public class PropertyFileReader implements ConfigurationReader{
 	}
 
 	
+	public String getUsername() {
+	
+		return properties.getProperty("username");
 	}
+
+	
+	public String getPassword() {
+	
+		return properties.getProperty("password");
+	}
+
+	
+	public String getProduct() {
+	
+		return properties.getProperty("product");
+	}
+
+	
+	public String getBillingDetails() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+	
+
+	
+	public String getPostCode() {
+		
+		return properties.getProperty("getCouponCode");
+	}
+
+	
+	public String getCouponCode() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	
+		
+
+
+		
+
+	
+}
